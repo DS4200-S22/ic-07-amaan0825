@@ -42,26 +42,31 @@ const data1 = [
 */ 
 
 // TODO: What does this code do? 
+// returns data from data1
 let maxY1 = d3.max(data1, function(d) { return d.score; });
 
-// TODO: What does each line of this code do?   
+// TODO: What does each line of this code do? 
+// provides set up for y scale
 let yScale1 = d3.scaleLinear()
             .domain([0,maxY1])
             .range([height-margin.bottom,margin.top]); 
 
 // TODO: What does each line of this code do? 
+// provides the set up for thhe x scale
 let xScale1 = d3.scaleBand()
             .domain(d3.range(data1.length))
             .range([margin.left, width - margin.right])
             .padding(0.1); 
 
 // TODO: What does each line of this code do?  
+// adding y axis to svg 1
 svg1.append("g")
    .attr("transform", `translate(${margin.left}, 0)`) 
    .call(d3.axisLeft(yScale1)) 
    .attr("font-size", '20px'); 
 
 // TODO: What does each line of this code do? 
+// adding x axis to svg 1
 svg1.append("g")
     .attr("transform", `translate(0,${height - margin.bottom})`) 
     .call(d3.axisBottom(xScale1) 
@@ -75,25 +80,29 @@ svg1.append("g")
 */
 
 // TODO: What does each line of this code do? 
+// creating a new svg to build within
 const tooltip1 = d3.select("#hard-coded-bar") 
                 .append("div") 
                 .attr('id', "tooltip1") 
                 .style("opacity", 0) 
                 .attr("class", "tooltip"); 
 
-// TODO: What does each line of this code do?  
+// TODO: What does each line of this code do?
+// adding a mouseover function in the occurance of an event 
 const mouseover1 = function(event, d) {
   tooltip1.html("Name: " + d.name + "<br> Score: " + d.score + "<br>") 
           .style("opacity", 1);  
 }
 
 // TODO: What does each line of this code do? 
+// adding another mouseover funtion 
 const mousemove1 = function(event, d) {
   tooltip1.style("left", (event.x)+"px") 
           .style("top", (event.y + yTooltipOffset) +"px"); 
 }
 
-// TODO: What does this code do? 
+// TODO: What does this code do?
+// function when mouse leave the data point 
 const mouseleave1 = function(event, d) { 
   tooltip1.style("opacity", 0); 
 }
@@ -105,6 +114,7 @@ const mouseleave1 = function(event, d) {
 */
 
 // TODO: What does each line of this code do? 
+// building the svg with all the funtions 
 svg1.selectAll(".bar") 
    .data(data1) 
    .enter()  
