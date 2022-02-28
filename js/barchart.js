@@ -17,6 +17,7 @@ const yTooltipOffset = 15;
 
 
 // TODO: What does this code do? 
+// adding a placeholder svg 
 const svg1 = d3
   .select("#hard-coded-bar")
   .append("svg")
